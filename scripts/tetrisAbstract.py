@@ -131,17 +131,24 @@ class TetrisAbstract(object):
 		#Clear the row if it is full, move other rows down
 		for rowN, row in enumerate(self.grid):
 			# If the row is full
-			if all(row):
-				# Add to counter
-				self.lines_cleared += 1
+			# NEED TO repeat this iteration if true, because the higher row,
+			# which is now in place of a current one, may also be full
+			while True:
+				if all(row):
+					# Add to counter
+					self.lines_cleared += 1
 
-				# Iterate over rows above the cleared one
-				for n, r in self.grid[rowN+1:N_ROWS+1]:
-					# Only rows above the cleared one and below the top of the glass
-					if N_ROWS > n > rowN:
-						for colN, block in enumerate(row):
-							#Set the row to values of a row directly above it
-							self.grid[n][colN] = self.grid[n-1][colN]
+					# Iterate over rows above the cleared one
+					for n, r in enumerate(self.grid):
+						# Only rows above the cleared one and below the top of the glass
+						if N_ROWS > n >= rowN:
+							for colN, block in enumerate(row):
+								#Set the row to values of a row directly above it
+								self.grid[n][colN] = self.grid[n+1][colN]
+				else:
+					break
+
+
 
 
 		#Check GameOver
@@ -157,7 +164,7 @@ class TetrisAbstract(object):
 		Returns True is glass is overfilled (which is generally a gameover)
 		:return: Bool
 		"""
-		return any(self.grid[N_ROWS+1])
+		return any(self.grid[N_ROWS])
 
 	def pieceStepDown(self):
 		"""
