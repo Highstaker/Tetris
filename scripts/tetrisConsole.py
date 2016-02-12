@@ -13,34 +13,6 @@ class TetrisConsole(object):
 		super(TetrisConsole, self).__init__()
 		self.console_screen = ConsoleScreen()
 		self.tetris_timer = TetrisTimer(self.console_screen)
-		# self.tetris_abstract = self.tetris_timer.tetris_abstract
-
-
-
-		# self.key_handlers = KeyHandlers(tetris_abstract=self.tetris_abstract)
-
-		# self.addKeyHandlers()
-
-		# self.stay_time_start = time.time()
-
-		# self.key_handler.main_loop()
-
-
-	# def addKeyHandlers(self):
-	# 	# kh = self.key_handler
-	# 	ab = self.tetris_abstract
-	#
-	# 	kh.addKeyHandler(kh.KEY_LEFT, ab.moveLeft())
-
-	# def mainRoutine(self):
-	# 	ab = self.tetris_abstract
-	#
-	# 	if (time.time()-self.stay_time_start) > FALL_PERIOD:
-	# 		#try to move piece down
-	# 		ab.pieceStepDown()
-	# 		ab.formatGrid(_print=False)
-	#
-	# 		stay_time_start = time.time()
 
 
 	def run(self):

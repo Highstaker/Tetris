@@ -19,12 +19,19 @@ class TetrisTimer(object):
 		self.screenClass = screenClass
 
 		# class containing functions invoked on button presses
-		self.key_handlers = KeyHandlers(tetris_abstract=self.tetris_abstract, screenClass=screenClass)
+		self.key_handlers = KeyHandlers(tetris_abstract=self.tetris_abstract, screenClass=screenClass, timerClass=self)
 
 		# pass key handler functions to screen class, if it can manage the input
 		screenClass.initKeyHandlers(self.key_handlers)
 
 		# start point for the timer
+		self.stay_time_start = time()
+
+	def resetFallTimer(self):
+		"""
+		Sets the start time for fall timer to current, thus resetting it
+		:return:
+		"""
 		self.stay_time_start = time()
 
 	def runGame(self):

@@ -25,6 +25,8 @@ class ConsoleScreen(object):
 			kh.on_LEFT_ARROW()
 		elif c == curses.KEY_UP:
 			kh.on_UP_ARROW()
+		elif c == curses.KEY_DOWN:
+			kh.on_DOWN_ARROW()
 
 
 	def update(self, game_screen):
